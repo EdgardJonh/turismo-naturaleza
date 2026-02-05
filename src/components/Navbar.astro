@@ -1,0 +1,143 @@
+---
+// Transparent navbar over hero; dark + blur on scroll. Desktop links + mobile hamburger menu.
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-out"
+  aria-label="Main navigation"
+>
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+    <a href="/" class="text-white text-xl font-bold tracking-tight hover:text-teal-300 transition-colors z-50">
+      Adventor
+    </a>
+
+    <!-- Desktop menu -->
+    <ul class="hidden md:flex items-center gap-6 lg:gap-8 text-white text-sm font-medium">
+      <li><a href="/" class="hover:text-teal-300 transition-colors duration-200">Home</a></li>
+      <li><a href="#about" class="hover:text-teal-300 transition-colors duration-200">About</a></li>
+      <li><a href="#tours" class="hover:text-teal-300 transition-colors duration-200">Tours</a></li>
+      <li><a href="#adventures" class="hover:text-teal-300 transition-colors duration-200">Adventures</a></li>
+      <li><a href="#blog" class="hover:text-teal-300 transition-colors duration-200">Blog</a></li>
+      <li><a href="#contact" class="hover:text-teal-300 transition-colors duration-200">Contact</a></li>
+    </ul>
+
+    <!-- Icons + Hamburger -->
+    <div class="flex items-center gap-2 sm:gap-4">
+      <a href="#search" class="text-white p-2 rounded-lg hover:text-teal-300 hover:bg-white/10 transition-all duration-200" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </a>
+      <a href="#favorites" class="text-white p-2 rounded-lg hover:text-teal-300 hover:bg-white/10 transition-all duration-200 hidden sm:inline-flex" aria-label="Favorites">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button
+        type="button"
+        id="menu-toggle"
+        class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile full-screen menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 md:hidden opacity-0 invisible transition-all duration-300 ease-out pointer-events-none"
+  aria-hidden="true"
+>
+  <!-- Backdrop -->
+  <div id="menu-backdrop" class="absolute inset-0 bg-gray-900/95 backdrop-blur-sm transition-opacity duration-300"></div>
+
+  <!-- Content: centered vertical links (slide-down feel) -->
+  <div class="relative flex flex-col items-center justify-center min-h-full px-6 py-20">
+    <ul class="flex flex-col items-center gap-8 text-center -translate-y-6 transition-transform duration-300 ease-out" id="menu-links">
+      <li><a href="/" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">Home</a></li>
+      <li><a href="#about" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">About</a></li>
+      <li><a href="#tours" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">Tours</a></li>
+      <li><a href="#adventures" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">Adventures</a></li>
+      <li><a href="#blog" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">Blog</a></li>
+      <li><a href="#contact" class="text-white text-xl font-medium hover:text-teal-300 transition-colors py-2">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBackdrop = document.getElementById('menu-backdrop');
+    const menuLinks = document.getElementById('menu-links');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    if (!navbar || !menuToggle || !mobileMenu) return;
+
+    const SCROLL_THRESHOLD = 24;
+
+    function updateNavbarScroll() {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        navbar?.classList.add('navbar-scrolled');
+      } else {
+        navbar?.classList.remove('navbar-scrolled');
+      }
+    }
+
+    function openMenu() {
+      mobileMenu?.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+      mobileMenu?.setAttribute('aria-hidden', 'false');
+      menuToggle?.setAttribute('aria-expanded', 'true');
+      menuToggle?.setAttribute('aria-label', 'Close menu');
+      iconOpen?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      menuLinks?.classList.remove('-translate-y-4');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      menuToggle?.setAttribute('aria-label', 'Open menu');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      menuLinks?.classList.add('-translate-y-4');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMenu() {
+      const isOpen = menuToggle?.getAttribute('aria-expanded') === 'true';
+      if (isOpen) closeMenu();
+      else openMenu();
+    }
+
+    menuToggle?.addEventListener('click', toggleMenu);
+    menuBackdrop?.addEventListener('click', closeMenu);
+    menuLinks?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    window.addEventListener('scroll', updateNavbarScroll, { passive: true });
+    updateNavbarScroll();
+  })();
+</script>
+
+<style>
+  #navbar.navbar-scrolled {
+    @apply bg-gray-900/80 backdrop-blur-md shadow-lg;
+  }
+</style>

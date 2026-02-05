@@ -1,0 +1,37 @@
+---
+// Hero section with full-width background image and overlay
+const heroImage = 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1920&q=80';
+---
+
+<section class="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src={heroImage}
+      alt="Waterfall and nature adventure"
+      class="w-full h-full object-cover"
+      fetchpriority="high"
+    />
+    <!-- Dark overlay for text readability -->
+    <div class="absolute inset-0 bg-gray-900/60 z-10" aria-hidden="true"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-20 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <p class="text-lg sm:text-xl md:text-2xl font-normal tracking-wide mb-2 opacity-95">
+      Discover the
+    </p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight mb-4">
+      Adventure Travel
+    </h1>
+    <p class="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-xl mx-auto">
+      Your best Adventure Destination
+    </p>
+    <a
+      href="#adventures"
+      class="inline-block px-8 py-4 sm:px-10 sm:py-5 bg-gray-500 hover:bg-gray-800 text-white font-semibold text-base sm:text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent min-h-[48px] flex items-center justify-center touch-manipulation"
+    >
+      View Adventures
+    </a>
+  </div>
+</section>

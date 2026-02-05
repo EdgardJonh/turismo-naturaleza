@@ -1,11 +1,56 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import WaveDivider from '../components/WaveDivider.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ActivityCard from '../components/ActivityCard.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const activities = [
+  {
+    title: 'Zip Lines',
+    description: 'Add some adventure to your travel plans',
+    imageSrc: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=400&fit=crop',
+    imageAlt: 'Person on a zipline in the forest',
+  },
+  {
+    title: 'Kayaking',
+    description: 'Kayaking makes travel to the next level',
+    imageSrc: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=400&fit=crop',
+    imageAlt: 'People kayaking on calm waters',
+  },
+  {
+    title: 'Bungee Jump',
+    description: 'Bungee jumps are one of the most thrilling adventures',
+    imageSrc: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop',
+    imageAlt: 'Person bungee jumping',
+  },
+  {
+    title: 'Canoeing',
+    description: 'Just sit in the canoe and float with complete safety',
+    imageSrc: 'https://images.unsplash.com/photo-1504280390067-1bad23fc5a10?w=400&h=400&fit=crop',
+    imageAlt: 'Person canoeing on a lake',
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+  <Hero />
+  <WaveDivider />
+
+  <section id="adventures" class="bg-white py-20 sm:py-24 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle accent="Take yourself" title="Adventure Ideas" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        {activities.map((activity) => (
+          <ActivityCard
+            title={activity.title}
+            description={activity.description}
+            imageSrc={activity.imageSrc}
+            imageAlt={activity.imageAlt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
