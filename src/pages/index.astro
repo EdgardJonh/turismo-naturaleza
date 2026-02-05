@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import WaveDivider from '../components/WaveDivider.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ActivityCard from '../components/ActivityCard.astro';
+import TourPackageCard from '../components/TourPackageCard.astro';
 
 const activities = [
   {
@@ -31,6 +32,36 @@ const activities = [
     imageAlt: 'Person canoeing on a lake',
   },
 ];
+
+const tourPackages = [
+  {
+    title: 'Patagonia Adventure',
+    description: 'Explore glaciers, lakes and breathtaking southern landscapes.',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&h=500&fit=crop',
+    imageAlt: 'Patagonia mountains and glaciers',
+    duration: '5 Days',
+    price: '$1,250',
+    badge: 'Popular',
+  },
+  {
+    title: 'Amazon Rainforest',
+    description: 'Discover wildlife and nature deep inside the Amazon jungle.',
+    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&h=500&fit=crop',
+    imageAlt: 'Amazon rainforest and river',
+    duration: '7 Days',
+    price: '$1,890',
+    badge: 'Best Seller',
+  },
+  {
+    title: 'Caribbean Escape',
+    description: 'Relax on white sand beaches with crystal clear water.',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop',
+    imageAlt: 'Caribbean tropical beach',
+    duration: '4 Days',
+    price: '$980',
+    badge: 'Popular',
+  },
+];
 ---
 
 <Layout>
@@ -48,6 +79,27 @@ const activities = [
             description={activity.description}
             imageSrc={activity.imageSrc}
             imageAlt={activity.imageAlt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tour Packages -->
+  <section id="tours" class="bg-gray-50 py-20 sm:py-24 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionTitle accent="Choose your trip" title="Popular Tour Packages" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {tourPackages.map((pkg) => (
+          <TourPackageCard
+            image={pkg.image}
+            imageAlt={pkg.imageAlt}
+            title={pkg.title}
+            description={pkg.description}
+            duration={pkg.duration}
+            price={pkg.price}
+            badge={pkg.badge}
           />
         ))}
       </div>
