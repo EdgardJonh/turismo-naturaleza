@@ -3,9 +3,9 @@ import WaveDivider from './WaveDivider.astro';
 import MoutainDivider from './MoutainDivider.astro';
 import TornDivider from './TornDivider.astro';
 
-const { type = "wave" } = Astro.props;
+const { type = "wave", color = "white" } = Astro.props;
 ---
 
 {type === "wave" && <WaveDivider />}
 {type === "mountain" && <MoutainDivider />}
-{type === "torn" && <TornDivider />}
+{type === "torn" && <TornDivider color={color} />}
