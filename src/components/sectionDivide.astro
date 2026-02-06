@@ -1,0 +1,11 @@
+---
+import WaveDivider from './WaveDivider.astro';
+import MoutainDivider from './MoutainDivider.astro';
+import TornDivider from './TornDivider.astro';
+
+const { type = "wave" } = Astro.props;
+---
+
+{type === "wave" && <WaveDivider />}
+{type === "mountain" && <MoutainDivider />}
+{type === "torn" && <TornDivider />}
