@@ -2,7 +2,7 @@
 // Soft wave-shaped divider between sections
 ---
 
-<div class="relative w-full overflow-hidden" aria-hidden="true">
+<!-- <div class=" w-full overflow-hidden" aria-hidden="true">
   <svg
     class="relative block w-full h-12 sm:h-16 md:h-20 lg:h-24"
     viewBox="0 0 1440 120"
@@ -10,13 +10,51 @@
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill="white"
-      d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,96 1440,64 L1440,120 L0,120 Z"
+    fill="#ffffff"
+  d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,96 1440,64 L1440,120 L0,120 Z"
+  class="drop-shadow-[0_-8px_8px_rgba(0,0,0,0.15)]"
+
     />
+    
     <path
       fill="white"
       d="M0,80 C240,40 480,100 720,80 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
       opacity="0.9"
+    />
+  </svg>
+</div> -->
+<div class="w-full overflow-hidden leading-none" aria-hidden="true">
+  <svg
+    class="block w-full h-20 sm:h-24 md:h-28 lg:h-32"
+    viewBox="0 0 1440 160"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Ola 1 (fondo) -->
+    <path
+      fill="#ffffff"
+      opacity="0.25"
+      d="M0,100 C200,140 400,60 700,100 C1000,140 1200,60 1440,100 L1440,160 L0,160 Z"
+    />
+
+    <!-- Ola 2 -->
+    <path
+      fill="#ffffff"
+      opacity="0.4"
+      d="M0,90 C240,50 480,120 720,90 C960,60 1200,120 1440,90 L1440,160 L0,160 Z"
+    />
+
+    <!-- Ola 3 -->
+    <path
+      fill="#ffffff"
+      opacity="0.65"
+      d="M0,80 C360,120 720,40 1080,80 C1260,110 1380,110 1440,80 L1440,160 L0,160 Z"
+    />
+
+    <!-- Ola 4 (frontal) -->
+    <path
+      fill="#ffffff"
+      d="M0,70 C300,120 600,20 900,70 C1200,120 1350,40 1440,70 L1440,160 L0,160 Z"
     />
   </svg>
 </div>

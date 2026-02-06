@@ -1,9 +1,12 @@
 ---
 // Hero section with full-width background image and overlay
 const heroImage = 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1920&q=80';
+import WaveDivider from './WaveDivider.astro';
+import MoutainDivider from './MoutainDivider.astro';
+import TornDivider from './TornDivider.astro';
 ---
 
-<section class="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+<section class="relative min-h-screen w-full flex flex-col justify-center items-center ">
   <!-- Background image -->
   <div class="absolute inset-0 z-0">
     <img
@@ -33,5 +36,11 @@ const heroImage = 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?
     >
       View Adventures
     </a>
+  </div>
+   <!-- 🌊 WAVE DIVIDER DENTRO DEL HERO -->
+   <div class="absolute bottom-0 left-0 w-full leading-none">
+    <!-- <WaveDivider /> -->
+    <!-- <TornDivider /> -->
+     <TornDivider />
   </div>
 </section>
